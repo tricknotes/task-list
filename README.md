@@ -1,0 +1,3 @@
+# Demo application for Ruby Sapporo Night vol.14
+
+In preparation...
