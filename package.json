@@ -1,0 +1,16 @@
+{
+  "author": "Ryunosuke SATO <tricknotes.rs@gmail.com> (http://github.com/tricknotes)",
+  "name": "ruby-sapporo-night-14",
+  "description": "Demo for Ruby Sapporo Night vol.14",
+  "version": "0.0.0",
+  "homepage": "http://ruby-sapporo.org/news/2012/02/01/rsn-14.html",
+  "repository": {
+    "url": ""
+  },
+  "engines": {
+    "node": "~0.6.10"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {}
+}
