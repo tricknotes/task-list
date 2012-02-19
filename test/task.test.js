@@ -35,6 +35,13 @@ describe('Task', function() {
       });
       task.destroy();
     });
+
+    it('should remove all listeners', function() {
+      var task = Task.create();
+      task.on('change', function() {});
+      task.destroy();
+      expect(task._events).to.be.eql({});
+    });
   });
 
   describe('.create()', function() {

@@ -22,6 +22,7 @@
 
   Task.prototype.destroy = function () {
     this.emit('destroy');
+    this.removeAllListeners();
   };
 
   Task.__proto__ = new EventEmitter();
