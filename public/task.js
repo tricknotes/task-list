@@ -6,7 +6,6 @@
     EventEmitter.call(this);
     this.text = text;
     this.done = false;
-    this.priority = 3;
   };
 
   Task.prototype = new EventEmitter();
