@@ -8,7 +8,6 @@
 
   // 
   $('#createForm').on('submit', function() {
-
     var text = $('#text').val()
       , task = Task.create(text)
     return false;
