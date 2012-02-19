@@ -25,6 +25,11 @@
     var self = this
       , task = this.task;
 
+    root.find('.done').on('change', function() {
+      var checked = $(this).attr('checked');
+      task.set('done', checked);
+    });
+
     root.find('.delete').on('click', function() {
       task.destroy();
     });
