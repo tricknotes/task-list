@@ -34,7 +34,7 @@
       task.destroy();
     });
 
-    task.on('destroy', function() {
+    task.once('destroy', function() {
       root.remove();
     })
   }
