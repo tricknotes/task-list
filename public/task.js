@@ -3,6 +3,7 @@
 
   // model
   var Task = function(text) {
+    EventEmitter.call(this);
     this.text = text;
     this.done = false;
     this.priority = 3;
