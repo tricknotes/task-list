@@ -19,9 +19,11 @@
 
   // setup add task form
   $('#createForm').on('submit', function() {
-    var text = $('#text').val()
-      , task = Task.create(text)
-    $('#text').val('');
+    var $text = $('#text')
+      , text = $text.val()
+
+    Task.create(text);
+    $text.val('');
     return false;
   });
 })(window);
