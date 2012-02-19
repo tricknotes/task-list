@@ -37,6 +37,11 @@ describe('Task', function() {
       expect(task).to.be.a(Task);
     });
 
+    it('should create instance with text', function() {
+      var task = Task.create('ワインを買う');
+      expect(task.get('text')).to.be('ワインを買う');
+    });
+
     it('should emit event "create"', function() {
       Task.on('create', function(todo) {
         expect(true).to.be.ok();;

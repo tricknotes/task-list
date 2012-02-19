@@ -22,8 +22,8 @@
 
   Task.__proto__ = new EventEmitter();
 
-  Task.create = function() {
-    var task = new Task();
+  Task.create = function(text) {
+    var task = new Task(text);
     this.emit('create', task);
     return task;
   };
