@@ -31,6 +31,11 @@
     task.once('destroy', function() {
       root.remove();
     });
+
+    task.on('change', function() {
+      var done = task.get('done');
+      root.find('.text').css('text-decoration', done ? 'line-through' : 'none');
+    });
   }
 
   global.TaskView = TaskView;
