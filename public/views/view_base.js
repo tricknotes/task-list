@@ -1,5 +1,7 @@
 ;(function(global) {
-  var ViewBase = function() {}
+  var ViewBase = function() {
+    this.el = null;
+  }
 
   ViewBase.prototype.template = '';
 
@@ -10,9 +12,9 @@
   }
 
   ViewBase.prototype.render = function() {
-    var html = $(this.compile()(this));
-    this.observe(html);
-    return html;
+    var el = this.el = $(this.compile()(this));
+    this.observe(el);
+    return el;
   }
 
   global.ViewBase = ViewBase;
