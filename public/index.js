@@ -22,6 +22,8 @@
     var $text = $('#text')
       , text = $text.val()
 
+    if (!text) { return false; }
+
     Task.create(text);
     $text.val('');
     return false;
