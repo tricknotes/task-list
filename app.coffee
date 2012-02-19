@@ -1,4 +1,5 @@
 app = require('./lib/index')
 
-app.listen(3000)
+port = Number(process.env.PORT || 80)
+app.listen(port)
 console.log('Server listened...')
