@@ -23,10 +23,16 @@
   ].join('\n');
 
   TaskView.prototype.observe = function(root) {
-    var self = this;
+    var self = this
+      , task = this.task;
+
     root.find('.delete').on('click', function() {
-      console.log('DELETE', self.task);
+      task.destroy();
     });
+
+    task.on('destroy', function() {
+      root.remove();
+    })
   }
 
   global.TaskView = TaskView;
