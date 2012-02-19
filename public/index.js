@@ -12,6 +12,4 @@
       , task = Task.create(text)
     return false;
   });
-
-
 })(window);
