@@ -12,6 +12,14 @@ block scripts
   script(src='/EventEmitter-3.1.4.js')
   script(src='/ui.js')
   script(src='/task.js')
+  script(src='/views/task_view.js')
+  script(src='/index.js')
 
 block content
   h1= 'Hello!!!'
+
+  form#createForm
+    input#text(type='text', placeholder='Input new task...')
+    input#createTask(type='submit', value='Create')
+
+  ul#taskList
