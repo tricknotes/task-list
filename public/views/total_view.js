@@ -5,7 +5,6 @@
 
     var self = this;
     this.update = function() {
-      console.log(self.el);
       self.el.html(self.render())
     }
   }
