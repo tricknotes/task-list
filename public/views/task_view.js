@@ -1,17 +1,11 @@
 ;(function(global) {
   var TaskView = function(task) {
+    ViewBase.call(this);
     this.task = task;
   }
 
-  TaskView.prototype.compile = function() {
-    return _.template(this.template);
-  }
-
-  TaskView.prototype.render = function() {
-    var html = $(this.compile()(this));
-    this.observe(html);
-    return html;
-  }
+  TaskView.prototype = new ViewBase();
+  TaskView.prototype.constructor = TaskView;
 
   TaskView.prototype.template = [
       '<li class="task">'
