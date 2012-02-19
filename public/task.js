@@ -20,6 +20,10 @@
     return this[property];
   };
 
+  Task.prototype.destroy = function () {
+    this.emit('destroy');
+  };
+
   Task.__proto__ = new EventEmitter();
 
   Task.create = function(text) {

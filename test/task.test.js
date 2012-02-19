@@ -27,6 +27,16 @@ describe('Task', function() {
     });
   });
 
+  describe('#destroy', function() {
+    it('should emit event "destroy"', function() {
+      var task = Task.create('削除用');
+      task.on('destroy', function() {
+        expect(true).to.be.ok();
+      });
+      task.destroy();
+    });
+  });
+
   describe('.create()', function() {
     afterEach(function() {
       Task.removeAllListeners('create');
