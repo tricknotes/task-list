@@ -30,7 +30,7 @@
 
     task.once('destroy', function() {
       root.remove();
-    })
+    });
   }
 
   global.TaskView = TaskView;
