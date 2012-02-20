@@ -18,8 +18,7 @@
   ].join('\n');
 
   TaskView.prototype.observe = function(root) {
-    var self = this
-      , task = this.task;
+    var task = this.task;
 
     root.find('.done').on('change', function() {
       var checked = $(this).attr('checked');
