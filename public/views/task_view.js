@@ -10,7 +10,7 @@
   TaskView.prototype.template = [
       '<li class="task">'
     ,   '<label>'
-    ,     '<input class="done" type="checkbox" <%- task.get("done") ? "checked=\\"checked\\"" : "" %>" />'
+    ,     '<input class="done" type="checkbox" <%- task.get("done") ? "checked=\\"checked\\"" : "" %> />'
     ,     '<span class="text"><%- task.get("text") %></span>'
     ,   '</label>'
     ,   '<a class="delete">'
