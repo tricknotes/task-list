@@ -20,6 +20,13 @@
     return this[property];
   };
 
+  Task.prototype.data = function() {
+    return {
+        text: this.get('text')
+      , done: this.get('done')
+    };
+  };
+
   Task.prototype.destroy = function () {
     this.emit('destroy');
     this.removeAllListeners();
