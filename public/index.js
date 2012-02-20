@@ -28,4 +28,35 @@
     $text.val('');
     return false;
   });
+
+  // setup storage
+  var storage = new Storage('tasklist', localStorage);
+  storage.update(function(data) {
+    return data || []; // initialize
+  });
+
+  Task.on('create', function(task) {
+    task.on('destroy', function() {
+      storage.update(function(tasks) {
+        var index = tasks.indexOf(task.get('text'));
+        tasks.splice(index, 1);
+        return tasks;
+      });
+    });
+  });
+
+  // restore tasks
+  storage.find(function(tasks) {
+    tasks.forEach(function(task) {
+      Task.create(task)
+    });
+  });
+
+  // save created tasks
+  Task.on('create', function(task) {
+    storage.update(function(tasks) {
+      tasks.push(task.get('text'));
+      return tasks;
+    });
+  });
 })(window);
