@@ -29,7 +29,7 @@ describe('Task', function() {
 
   describe('#destroy', function() {
     it('should emit event "destroy"', function() {
-      var task = Task.create('削除用');
+      var task = new Task();
       task.on('destroy', function() {
         expect(true).to.be.ok();
       });
@@ -37,7 +37,7 @@ describe('Task', function() {
     });
 
     it('should remove all listeners', function() {
-      var task = Task.create();
+      var task = new Task();
       task.on('change', function() {});
       task.destroy();
       expect(task._events).to.be.eql({});
