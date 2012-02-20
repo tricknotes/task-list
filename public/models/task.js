@@ -2,10 +2,11 @@
   var EventEmitter = global.EventEmitter;
 
   // model
-  var Task = function(text) {
+  var Task = function(attrs) {
     EventEmitter.call(this);
-    this.text = text;
-    this.done = false;
+    this.id   = attrs && attrs.id || ('task-' + Number(new Date()));
+    this.text = attrs && attrs.text;
+    this.done = attrs && attrs.done || false;
   };
 
   Task.prototype = new EventEmitter();
@@ -22,7 +23,8 @@
 
   Task.prototype.data = function() {
     return {
-        text: this.get('text')
+        id:   this.get('id')
+      , text: this.get('text')
       , done: this.get('done')
     };
   };
@@ -34,8 +36,8 @@
 
   Task.__proto__ = new EventEmitter();
 
-  Task.create = function(text) {
-    var task = new Task(text);
+  Task.create = function(attrs) {
+    var task = new Task(attrs);
     this.emit('create', task);
     return task;
   };

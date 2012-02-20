@@ -47,9 +47,14 @@ describe('Task', function() {
   describe('#data()', function() {
     it('should returns task data', function() {
       var task = new Task();
+      task.set('id',   'task-1');
       task.set('text', '洗濯をする');
       task.set('done', true);
-      expect(task.data()).to.be.eql({text: '洗濯をする', done: true})
+      expect(task.data()).to.be.eql({
+          id: 'task-1'
+        , text: '洗濯をする'
+        , done: true
+      })
     });
   });
 
@@ -64,8 +69,13 @@ describe('Task', function() {
     });
 
     it('should create instance with text', function() {
-      var task = Task.create('ワインを買う');
+      var task = Task.create({text: 'ワインを買う'});
       expect(task.get('text')).to.be('ワインを買う');
+    });
+
+    it('should create instance with done', function() {
+      var task = Task.create({done: true});
+      expect(task.get('done')).to.be(true);
     });
 
     it('should emit event "create"', function() {

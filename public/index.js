@@ -24,7 +24,7 @@
 
     if (!text) { return false; }
 
-    Task.create(text);
+    Task.create({text: text});
     $text.val('');
     return false;
   });
@@ -37,26 +37,37 @@
 
   Task.on('create', function(task) {
     task.on('destroy', function() {
-      storage.update(function(tasks) {
-        var index = tasks.indexOf(task.get('text'));
-        tasks.splice(index, 1);
-        return tasks;
+      storage.update(function(data) {
+        return _(data).reject(function(attrs) {
+          return _.isEqual(attrs, task.data());
+        });
+      });
+    });
+
+    task.on('change', function(property, value) {
+      storage.update(function(data) {
+        _(data).each(function(attrs) {
+          if (attrs.id === task.get('id')) {
+            attrs[property] = value;
+          };
+        });
+        return data;
       });
     });
   });
 
   // restore tasks
-  storage.find(function(tasks) {
-    tasks.forEach(function(task) {
-      Task.create(task)
+  storage.find(function(data) {
+    data.forEach(function(attrs) {
+      Task.create(attrs);
     });
   });
 
   // save created tasks
   Task.on('create', function(task) {
-    storage.update(function(tasks) {
-      tasks.push(task.get('text'));
-      return tasks;
+    storage.update(function(data) {
+      data.push(task.data());
+      return data;
     });
   });
 })(window);
