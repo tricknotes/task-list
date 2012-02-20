@@ -13,7 +13,9 @@
     ,     '<input class="done" type="checkbox" <%- task.get("done") ? "checked=\\"checked\\"" : "" %>" />'
     ,     '<span class="text"><%- task.get("text") %></span>'
     ,   '</label>'
-    ,   '<input type="button" class="delete" value="×"></input>'
+    ,   '<a class="delete">'
+    ,     '<img src="./images/delete.png" />'
+    ,   '</a>'
     , '</li>'
   ].join('\n');
 

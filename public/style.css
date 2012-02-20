@@ -1,3 +1,88 @@
+body {
+  text-align: center;
+  font-family: Osaka, Helvetica Neue, Helvetica, Arial;
+  font-size: 14px;
+  background: #cdd4dc;
+}
+
+h1 {
+  color: #4d545c;
+  padding: 30px 0px 0px 0px;
+  font-size: 70px;
+  text-shadow: -2px -2px 2px white;
+}
+
+img {
+  margin: 0px;
+  padding: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-box-shadow: 0 3px 10px #dedede, 0 1px 5px #888;
+  -moz-box-shadow: 0 3px 10px #dedede, 0 1px 5px #888;
+  max-width: 100%;
+}
+
+a img:hover {
+  cursor: pointer;
+  opacity: 0.4
+}
+
+#content {
+  background: #fff;
+  padding: 50px 30px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.4);
+  -moz-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.4);
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.4);
+  margin: auto;
+  width: 50%;
+  min-width: 320px;
+}
+
+#createForm input#text {
+  width: 85%;
+  font-size: 24px;
+  padding: 6px;
+}
+
+ul#taskList {
+  padding-left: 20px;
+}
+
+#taskList li {
+  font-size: 24px;
+  padding: 10px 0px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  display: block;
+}
+
+.task label {
+  width: 85%;
+  display: inline-block;
+}
+
+.task .delete {
+  display: none;
+}
+
+.task:hover .delete {
+  display: inline;
+}
+
+.total {
+  margin: 0px 40px;
+  text-align: right;
+}
+
+footer {
+  font-size: 14px;
+  padding: 70px 0px;
+  color: #4d545c;
+}
+
 .notification {
   border-bottom-color: #CACACA;
   -webkit-border-radius: 3px;
