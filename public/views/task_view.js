@@ -23,7 +23,7 @@
     var task = this.task;
 
     root.find('.done').on('change', function() {
-      var checked = $(this).attr('checked');
+      var checked = !!$(this).filter(':checked').length;
       task.set('done', checked);
     });
 
