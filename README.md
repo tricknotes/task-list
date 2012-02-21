@@ -12,8 +12,8 @@ Requirements:
 * [CoffeeScript](http://jashkenas.github.com/coffee-script/) (~> 1.2.0)
 
 ``` sh
-$ git clone git://github.com/tricknotes/ruby-sapporo-night-14.git
-$ cd ruby-sapporo-night-14
+$ git clone git://github.com/tricknotes/task-list.git
+$ cd task-list
 $ npm install .
 ```
 
