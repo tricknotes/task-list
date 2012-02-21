@@ -6,11 +6,15 @@
 
   Storage.prototype.find = function(fn) {
     var data = this.storage[this.name];
-    return fn(data ? JSON.parse(data) : null);
+    fn(data ? JSON.parse(data) : undefined);
   }
 
   Storage.prototype.update = function(fn) {
-    this.storage[this.name] = JSON.stringify(this.find(fn));
+    var updated;
+    this.find(function(data) {
+      updated = fn(data);
+    });
+    this.storage[this.name] = JSON.stringify(updated);
   }
 
   global.Storage = Storage;
