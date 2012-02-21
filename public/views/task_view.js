@@ -35,10 +35,14 @@
       root.remove();
     });
 
-    task.on('change', function() {
+    var toggleDeletion = function() {
       var done = task.get('done');
       root.find('.text').css('text-decoration', done ? 'line-through' : 'none');
-    });
+    }
+
+    task.on('change', toggleDeletion);
+
+    toggleDeletion();
   }
 
   global.TaskView = TaskView;
