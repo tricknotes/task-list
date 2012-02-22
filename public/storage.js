@@ -6,7 +6,7 @@
 
   Storage.prototype.find = function(fn) {
     var data = this.storage[this.name];
-    fn(data ? JSON.parse(data) : undefined);
+    fn(data ? this.restore(data) : undefined);
   }
 
   Storage.prototype.update = function(fn) {
@@ -14,7 +14,17 @@
     this.find(function(data) {
       updated = fn(data);
     });
-    this.storage[this.name] = JSON.stringify(updated);
+    this.storage[this.name] = this.dump(updated);
+  }
+
+  // API private
+  Storage.prototype.dump = function(data) {
+    return JSON.stringify(data);
+  }
+
+  // API private
+  Storage.prototype.restore = function(data) {
+    return JSON.parse(data);
   }
 
   global.Storage = Storage;

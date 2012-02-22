@@ -8,7 +8,7 @@ describe('Storage', function() {
   
   describe('#find()', function() {
     beforeEach(function() {
-      db['test-storage'] = JSON.stringify('found!');
+      db['test-storage'] = storage.dump('found!');
     });
 
     it('should access to data', function() {
@@ -23,7 +23,7 @@ describe('Storage', function() {
       storage.update(function(data) {
         return ['ok'];
       });
-      expect(JSON.parse(db['test-storage'])).to.eql(['ok']);
+      expect(storage.restore(db['test-storage'])).to.eql(['ok']);
     });
   });
 });
