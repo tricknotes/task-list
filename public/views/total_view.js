@@ -15,7 +15,7 @@
   TotalView.prototype.template = [
       '<div class="total">'
     ,   '<span class="all-count"><%- tasks.length %> tasks</span>'
-    ,   '<span class="done-count">(done: <%- doneTasks() %> tasks)</span>'
+    ,   '<span class="done-count">(done: <%- doneTaskCount() %> tasks)</span>'
     , '</div>'
   ].join('\n');
 
@@ -35,7 +35,7 @@
     this.update();
   }
 
-  TotalView.prototype.doneTasks = function() {
+  TotalView.prototype.doneTaskCount = function() {
     var i = 0;
     this.tasks.forEach(function(task) {
       if (task.get('done')) {

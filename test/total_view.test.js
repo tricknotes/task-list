@@ -48,7 +48,7 @@ describe('TotalView', function() {
     });
   });
 
-  describe('#doneTasks()', function() {
+  describe('#doneTaskCount()', function() {
     var task;
     beforeEach(function() {
       task = Task.create({done: false});
@@ -56,9 +56,9 @@ describe('TotalView', function() {
     });
 
     it('should returns count of done tasks', function() {
-      expect(totalView.doneTasks()).to.be(0);
+      expect(totalView.doneTaskCount()).to.be(0);
       task.set('done', true);
-      expect(totalView.doneTasks()).to.be(1);
+      expect(totalView.doneTaskCount()).to.be(1);
     });
   });
 
