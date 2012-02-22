@@ -29,7 +29,7 @@ describe('TaskView', function() {
       var el = taskView.render();
       el.appendTo('body');
       el.find('.delete').trigger(jQuery.Event('click'));
-      expect($('.task').length).to.be(0);
+      expect($('.task')).to.have.length(0);
     });
   });
 });
