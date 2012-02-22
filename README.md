@@ -30,4 +30,10 @@ PORT=3000 npm start
 
 ## Test
 
-Open your browser `test/index.html`
+Unit:
+
+* Open your browser `test/index.html`
+
+Acceptance:
+
+* `npm test`
