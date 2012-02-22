@@ -14,8 +14,8 @@
 
   TotalView.prototype.template = [
       '<div class="total">'
-    ,   '<span><%- tasks.length %> tasks</span>'
-    ,   '<span>(done: <%- doneTasks() %> tasks)</span>'
+    ,   '<span class="all-count"><%- tasks.length %> tasks</span>'
+    ,   '<span class="done-count">(done: <%- doneTasks() %> tasks)</span>'
     , '</div>'
   ].join('\n');
 
