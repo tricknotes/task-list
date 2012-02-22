@@ -14,7 +14,7 @@
 
   TotalView.prototype.template = [
       '<div class="total">'
-    ,   '<span class="all-count"><%- tasks.length %> tasks</span>'
+    ,   '<span class="all-count"><%- taskCount() %> tasks</span>'
     ,   '<span class="done-count">(done: <%- doneTaskCount() %> tasks)</span>'
     , '</div>'
   ].join('\n');
@@ -43,6 +43,10 @@
       }
     });
     return i;
+  }
+
+  TotalView.prototype.taskCount = function() {
+    return this.tasks.length;
   }
 
   global.TotalView = TotalView;

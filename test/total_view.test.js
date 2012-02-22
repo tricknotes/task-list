@@ -62,6 +62,14 @@ describe('TotalView', function() {
     });
   });
 
+  describe('#taskCount()', function() {
+    it('should return count of tasks', function() {
+      expect(totalView.taskCount()).to.be(0);
+      totalView.add(Task.create());
+      expect(totalView.taskCount()).to.be(1);
+    });
+  });
+
   describe('#update()', function() {
     it('should update self when task changed', function() {
       var task = Task.create({done: false});
