@@ -46,7 +46,7 @@
 
     task.on('change', function(property, value) {
       storage.update(function(data) {
-        _(data).each(function(attrs) {
+        data.forEach(function(attrs) {
           if (attrs.id === task.get('id')) {
             attrs[property] = value;
           };
