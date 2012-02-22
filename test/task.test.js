@@ -79,15 +79,15 @@ describe('Task', function() {
     });
 
     it('should emit event "create"', function() {
-      Task.on('create', function(todo) {
+      Task.on('create', function(task) {
         expect(true).to.be.ok();;
       });
       Task.create();
     });
 
     it('should send instance as argument for listener', function() {
-      Task.on('create', function(todo) {
-        expect(todo).to.be.a(Task);;
+      Task.on('create', function(task) {
+        expect(task).to.be.a(Task);
       });
       Task.create();
     });
