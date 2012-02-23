@@ -5,7 +5,7 @@ describe('Storage', function() {
     db = {};
     storage = new Storage('test-storage', db);
   });
-  
+
   describe('#find()', function() {
     beforeEach(function() {
       db['test-storage'] = storage.dump('found!');

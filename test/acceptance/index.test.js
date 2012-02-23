@@ -16,8 +16,8 @@ describe('Task List', function() {
     app.close();
   });
 
-  it ('should add task with input text', function(done) {
-    browser.visit('http://localhost:'+port, function () {
+  it('should add task with input text', function(done) {
+    browser.visit('http://localhost:'+port, function() {
       browser
         .fill('task-text', 'Eat SoupCurry')
         .fire('submit', browser.$$('form#createForm'), function() {
