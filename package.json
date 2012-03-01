@@ -21,7 +21,7 @@
     , "jade": "~> 0.20.3"
   }
   , "devDependencies": {
-      "mocha": "~> 0.12.1"
+      "mocha": "~> 0.13.0"
     , "expect.js": "~> 0.1.2"
     , "zombie": "~> 0.12.14"
   }
