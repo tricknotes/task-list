@@ -22,14 +22,11 @@ describe('TaskView', function() {
   });
 
   describe('.delete with click', function() {
-    it('should make task destroy', function(done) {
-      task.on('destroy', function() {
-        done();
-      });
+    it('should make task destroy', function() {
       var el = taskView.render();
       el.appendTo('body');
       el.find('.delete').trigger(jQuery.Event('click'));
-      expect($('.task')).to.have.length(0);
+      expect(task.listeners('.destroy')).to.have.length(0)
     });
   });
 });
