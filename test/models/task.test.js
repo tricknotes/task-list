@@ -11,27 +11,30 @@ describe('Task', function() {
       expect(task.get('text')).to.be('買い物に行く');
     });
 
-    it('should emit event "change"', function() {
+    it('should emit event "change"', function(done) {
       task.on('change', function() {
         expect(true).to.be.ok();
+        done();
       });
       task.set('text', 'スープカレーを食べる');
     });
 
-    it('should send property with value as argument for listener', function() {
+    it('should send property with value as argument for listener', function(done) {
       task.on('change', function(property, value) {
         expect(property).to.be('text');
         expect(value).to.be('本を買う');
+        done();
       });
       task.set('text', '本を買う');
     });
   });
 
   describe('#destroy', function() {
-    it('should emit event "destroy"', function() {
+    it('should emit event "destroy"', function(done) {
       var task = new Task();
       task.on('destroy', function() {
         expect(true).to.be.ok();
+        done();
       });
       task.destroy();
     });
@@ -78,9 +81,10 @@ describe('Task', function() {
       expect(task.get('done')).to.be(true);
     });
 
-    it('should emit event "create"', function() {
+    it('should emit event "create"', function(done) {
       Task.on('create', function(task) {
-        expect(true).to.be.ok();;
+        expect(true).to.be.ok();
+        done();
       });
       Task.create();
     });
