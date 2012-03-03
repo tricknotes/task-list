@@ -10,7 +10,7 @@
   , "main": "./lib/index"
   , "scripts": {
       "start": "./node_modules/coffee-script/bin/coffee app.coffee"
-    , "test": "./node_modules/mocha/bin/mocha test/acceptance/*.test.js --reporter spec"
+    , "test": "./node_modules/mocha/bin/mocha test/driver.js test/acceptance/*.test.js --reporter spec"
   }
   , "engines": {
       "node": "~> 0.6.10"
@@ -24,6 +24,7 @@
       "mocha": "~> 0.14.0"
     , "expect.js": "~> 0.1.2"
     , "zombie": "~> 0.12.14"
+    , "mocha-ci-driver": "*"
   }
   , "optionalDependencies": {}
 }

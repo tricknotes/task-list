@@ -23,6 +23,10 @@
     <script src="../test/views/task_view.test.js"></script>
     <script src="../public/views/total_view.js"></script>
     <script src="../test/views/total_view.test.js"></script>
-    <script>mocha.run();</script>
+    <script>
+      if (!/Node.js/.test(navigator.appName)) {
+        mocha.run();
+      }
+    </script>
   </body>
 </html>
