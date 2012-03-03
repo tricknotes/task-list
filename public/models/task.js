@@ -1,5 +1,5 @@
-;(function(global) {
-  var EventEmitter = global.EventEmitter;
+;(function(window) {
+  var EventEmitter = window.EventEmitter;
 
   // model
   var Task = function(attrs) {
@@ -42,9 +42,5 @@
     return task;
   };
 
-  global.Task = Task;
-})(
-  'undefined' === typeof window ?
-    module.exports :
-    window
-);
+  window.Task = Task;
+})(this);

@@ -1,4 +1,4 @@
-;(function(global) {
+;(function(window) {
   var ViewBase = function() {
     this.el = null;
   }
@@ -17,5 +17,5 @@
     return el;
   }
 
-  global.ViewBase = ViewBase;
-})(window);
+  window.ViewBase = ViewBase;
+})(this);

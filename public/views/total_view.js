@@ -1,4 +1,4 @@
-;(function(global) {
+;(function(window) {
   var TotalView = function() {
     ViewBase.call(this);
     this.tasks = [];
@@ -49,5 +49,5 @@
     return this.tasks.length;
   }
 
-  global.TotalView = TotalView;
-})(window);
+  window.TotalView = TotalView;
+})(this);

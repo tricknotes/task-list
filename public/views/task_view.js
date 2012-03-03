@@ -1,4 +1,4 @@
-;(function(global) {
+;(function(window) {
   var TaskView = function(task) {
     ViewBase.call(this);
     this.task = task;
@@ -45,5 +45,5 @@
     toggleDeletion();
   }
 
-  global.TaskView = TaskView;
-})(window);
+  window.TaskView = TaskView;
+})(this);

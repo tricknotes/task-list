@@ -1,5 +1,5 @@
-;(function(global) {
-  var $ = global.Zepto;
+;(function(window) {
+  var $ = window.Zepto;
 
   // setup task list
   Task.on('create', function(task) {
@@ -70,4 +70,4 @@
       return data;
     });
   });
-})(window);
+})(this);

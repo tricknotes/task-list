@@ -1,4 +1,4 @@
-;(function(global) {
+;(function(window) {
   var Storage = function(name, storage) {
     this.name = name;
     this.storage = storage;
@@ -27,9 +27,5 @@
     return JSON.parse(data);
   }
 
-  global.Storage = Storage;
-})(
-  'undefined' === typeof window ?
-    module.exports :
-    window
-);
+  window.Storage = Storage;
+})(this);
