@@ -43,14 +43,14 @@ describe('Task', function() {
       var task = new Task();
       task.on('change', function() {});
       task.destroy();
-      expect(task._events).to.be.eql({});
+      expect(task.listeners('change')).to.have.length(0);
     });
   });
 
   describe('#data()', function() {
     it('should returns task data', function() {
       var task = new Task();
-      task.set('id',   'task-1');
+      task.set('id', 'task-1');
       task.set('text', '洗濯をする');
       task.set('done', true);
       expect(task.data()).to.be.eql({

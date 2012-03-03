@@ -1,7 +1,6 @@
 ;(function(window) {
   var EventEmitter = window.EventEmitter;
 
-  // model
   var Task = function(attrs) {
     EventEmitter.call(this);
     this.id   = attrs && attrs.id || ('task-' + Number(new Date()));

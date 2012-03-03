@@ -26,7 +26,7 @@ describe('TaskView', function() {
       var el = taskView.render();
       el.appendTo('body');
       el.find('.delete').trigger(jQuery.Event('click'));
-      expect(task.listeners('.destroy')).to.have.length(0)
+      expect(task.listeners('.destroy')).to.have.length(0);
     });
   });
 });
