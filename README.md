@@ -1,5 +1,7 @@
 # Task List
 
+[![Build Status](https://secure.travis-ci.org/tricknotes/task-list.png)](http://travis-ci.org/tricknotes/task-list)
+
 A simple task list.
 
 It's my study for MVC.
