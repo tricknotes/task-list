@@ -5,7 +5,7 @@
 
     var self = this;
     this.update = function() {
-      self.el.replaceWith(self.render())
+      self.el.replaceWith(self.render());
     }
   }
 
