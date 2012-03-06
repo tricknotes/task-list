@@ -36,6 +36,6 @@ Unit:
 
 * Open your browser `test/index.html`
 
-Acceptance:
+Unit and Acceptance:
 
 * `npm test`
