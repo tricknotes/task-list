@@ -17,7 +17,7 @@ describe('TaskView', function() {
       });
       var el = taskView.render();
       el.appendTo('body');
-      el.find('input.done').trigger(jQuery.Event('click'));
+      el.find('input.done').trigger(Zepto.Event('click'));
     });
   });
 
@@ -25,7 +25,7 @@ describe('TaskView', function() {
     it('should make task destroy', function() {
       var el = taskView.render();
       el.appendTo('body');
-      el.find('.delete').trigger(jQuery.Event('click'));
+      el.find('.delete').trigger(Zepto.Event('click'));
       expect(task.listeners('.destroy')).to.have.length(0);
     });
   });
