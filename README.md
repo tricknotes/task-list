@@ -4,7 +4,7 @@
 
 A simple task list.
 
-It's my study for MVC.
+It's my study for MVC and TEST.
 
 ## Setup
 
