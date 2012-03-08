@@ -1,5 +1,5 @@
 
 var Driver = require('mocha-ci-driver').Driver
-  , driver = new Driver(__dirname+'/../', 8888)
+  , driver = new Driver()
 
-driver.run('/test/index.html', 'Spec');
+driver.run(__dirname+'/index.html', 'Spec');
