@@ -21,7 +21,7 @@
     , "jade": "~> 0.20.3"
   }
   , "devDependencies": {
-      "mocha": "~> 0.14.1"
+      "mocha": "~> 1.0.1"
     , "expect.js": "~> 0.1.2"
     , "zombie": "~> 0.12.14"
     , "mocha-ci-driver": "*"
