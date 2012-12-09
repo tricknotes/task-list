@@ -1,8 +1,9 @@
 
 describe('TotalView', function() {
-  var totalView;
+  var taskList, totalView;
   beforeEach(function() {
-    totalView = new TotalView();
+    taskList = new TaskList();
+    totalView = new TotalView({collection: taskList});
     totalView.render();
     totalView.$el.appendTo('body');
   });
@@ -18,13 +19,13 @@ describe('TotalView', function() {
     });
 
     it('should add task', function() {
-      totalView.addTask(task);
-      expect(totalView.models).to.eql([task]);
+      taskList.add(task);
+      expect(totalView.collection.models).to.eql([task]);
     });
 
     it('should update self', function() {
       expect(totalView.$el.find('.all-count').text()).to.contain('0 tasks');
-      totalView.addTask(task);
+      taskList.add(task);
       expect(totalView.$el.find('.all-count').text()).to.contain('1 tasks');
     });
   });
@@ -33,17 +34,17 @@ describe('TotalView', function() {
     var task;
     beforeEach(function() {
       task = new Task();
-      totalView.addTask(task);
+      taskList.add(task);
     });
 
     it('should remove task', function() {
-      totalView.removeTask(task);
-      expect(totalView.models).to.eql([]);
+      taskList.remove(task);
+      expect(totalView.collection.models).to.eql([]);
     });
 
     it('should update self', function() {
       expect(totalView.$el.find('.all-count').text()).to.contain('1 tasks');
-      totalView.removeTask(task);
+      taskList.remove(task);
       expect(totalView.$el.find('.all-count').text()).to.contain('0 tasks');
     });
   });
@@ -52,7 +53,7 @@ describe('TotalView', function() {
     var task;
     beforeEach(function() {
       task = new Task({done: false});
-      totalView.addTask(task);
+      taskList.add(task);
     });
 
     it('should returns count of done tasks', function() {
@@ -65,7 +66,7 @@ describe('TotalView', function() {
   describe('#taskCount()', function() {
     it('should return count of tasks', function() {
       expect(totalView.taskCount()).to.be(0);
-      totalView.addTask(new Task());
+      taskList.add({});
       expect(totalView.taskCount()).to.be(1);
     });
   });
@@ -73,7 +74,7 @@ describe('TotalView', function() {
   describe('#update()', function() {
     it('should update self when task changed', function() {
       var task = new Task({done: false});
-      totalView.addTask(task);
+      taskList.add(task);
       expect(totalView.$el.find('.done-count').text()).to.contain('0 tasks');
       task.set('done', true);
       expect(totalView.$el.find('.done-count').text()).to.contain('1 tasks');

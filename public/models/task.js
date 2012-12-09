@@ -10,13 +10,17 @@
     },
 
     destroy: function() {
-      this.trigger('destroy');
+      this.trigger('destroy', this);
       this.off();
     }
   });
 
   var TaskList = Backbone.Collection.extend({
     model: Task,
+
+    initialize: function() {
+      this.on('destroy', this.remove, this);
+    }
   });
 
   window.Task = Task;

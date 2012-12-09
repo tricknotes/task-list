@@ -11,15 +11,9 @@
   });
 
   // setup total
-  var totalView = new TotalView();
+  var totalView = new TotalView({collection: taskList});
   totalView.render();
   totalView.$el.appendTo('#total');
-  taskList.on('add', function(task) {
-    totalView.addTask(task);
-    task.on('destroy', function() {
-      totalView.removeTask(task);
-    });
-  });
 
   // setup add task form
   $('#createForm').on('submit', function() {

@@ -4,30 +4,19 @@
     className: 'total',
 
     initialize: function() {
-      this.models = [];
-    },
-
-    addTask: function(model) {
-      model.on('change', this.render, this);
-      this.models.push(model);
-      this.render();
-    },
-
-    removeTask: function(model) {
-      var index = this.models.indexOf(model)
-      model.off('change', this.render, this);
-      this.models.splice(index, 1);
-      this.render();
+      this.collection.on('add', this.render, this);
+      this.collection.on('remove', this.render, this);
+      this.collection.on('change', this.render, this);
     },
 
     doneTaskCount: function() {
-      return _(this.models).select(function(model) {
+      return this.collection.select(function(model) {
         return model.get('done');
       }).length;
     },
 
     taskCount: function() {
-      return this.models.length;
+      return this.collection.length;
     },
 
     render: function() {
