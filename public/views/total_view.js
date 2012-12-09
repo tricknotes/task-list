@@ -21,13 +21,9 @@
     },
 
     doneTaskCount: function() {
-      var i = 0;
-      this.models.forEach(function(model) {
-        if (model.get('done')) {
-          i += 1;
-        }
-      });
-      return i;
+      return _(this.models).select(function(model) {
+        return model.get('done');
+      }).length;
     },
 
     taskCount: function() {
