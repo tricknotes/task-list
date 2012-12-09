@@ -41,7 +41,7 @@
     task.on('destroy', function() {
       storage.update(function(data) {
         return _(data).reject(function(attrs) {
-          return _.isEqual(attrs, task.data());
+          return _.isEqual(attrs.id, task.get('id'));
         });
       });
     });
@@ -50,7 +50,7 @@
       storage.update(function(data) {
         data.forEach(function(attrs) {
           if (attrs.id === task.get('id')) {
-            _(attrs).extend(updated.changes);
+            _(attrs).extend(task.toJSON());
           };
         });
         return data;
