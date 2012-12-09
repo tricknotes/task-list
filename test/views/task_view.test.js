@@ -3,11 +3,11 @@ describe('TaskView', function() {
   var taskView, task;
   beforeEach(function() {
     task = Task.create();
-    taskView = new TaskView(task);
+    taskView = new TaskView({model: task});
   });
 
   afterEach(function() {
-    taskView.el.remove();
+    taskView.$el.remove();
   });
 
   describe('input.done with click', function() {
@@ -15,9 +15,9 @@ describe('TaskView', function() {
       task.on('change:done', function() {
         done();
       });
-      var el = taskView.render();
-      el.appendTo('body');
-      el.find('input.done').trigger(Zepto.Event('click'));
+      taskView.render();
+      taskView.$el.appendTo('body');
+      taskView.$el.find('input.done').trigger(Zepto.Event('click'));
     });
   });
 
@@ -26,9 +26,9 @@ describe('TaskView', function() {
       task.on('destroy', function() {
         done();
       })
-      var el = taskView.render();
-      el.appendTo('body');
-      el.find('.delete').trigger(Zepto.Event('click'));
+      taskView.render();
+      taskView.$el.appendTo('body');
+      taskView.$el.find('.delete').trigger(Zepto.Event('click'));
     });
   });
 });

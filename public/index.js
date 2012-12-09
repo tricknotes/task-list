@@ -3,8 +3,9 @@
 
   // setup task list
   Task.on('create', function(task) {
-    var taskView = new TaskView(task);
-    taskView.render().appendTo('#taskList');
+    var taskView = new TaskView({model: task});
+    taskView.render();
+    taskView.$el.appendTo('#taskList');
   });
 
   // setup total
