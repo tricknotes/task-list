@@ -46,11 +46,11 @@
       });
     });
 
-    task.on('change', function(property, value) {
+    task.on('change', function(task, updated) {
       storage.update(function(data) {
         data.forEach(function(attrs) {
           if (attrs.id === task.get('id')) {
-            attrs[property] = value;
+            _(attrs).extend(updated.changes);
           };
         });
         return data;
