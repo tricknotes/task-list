@@ -15,15 +15,10 @@
     }
   });
 
-  // TODO Mode to Collection
-  Task.create = function(attrs) {
-    var task = new Task(attrs);
-    this.trigger('create', task);
-    return task;
-  };
-
-  // TODO Use Collection
-  _.extend(Task, Backbone.Events);
+  var TaskList = Backbone.Collection.extend({
+    model: Task,
+  });
 
   window.Task = Task;
+  window.TaskList = TaskList;
 })(this);

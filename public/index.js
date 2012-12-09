@@ -1,8 +1,10 @@
 ;(function(window) {
   var $ = window.jQuery;
 
+  var taskList = new TaskList();
+
   // setup task list
-  Task.on('create', function(task) {
+  taskList.on('add', function(task) {
     var taskView = new TaskView({model: task});
     taskView.render();
     taskView.$el.appendTo('#taskList');
@@ -12,7 +14,7 @@
   var totalView = new TotalView();
   totalView.render();
   totalView.$el.appendTo('#total');
-  Task.on('create', function(task) {
+  taskList.on('add', function(task) {
     totalView.addTask(task);
     task.on('destroy', function() {
       totalView.removeTask(task);
@@ -26,7 +28,7 @@
 
     if (!text) { return false; }
 
-    Task.create({text: text});
+    taskList.add({text: text});
     $text.val('');
     return false;
   });
@@ -37,7 +39,7 @@
     return data || []; // initialize
   });
 
-  Task.on('create', function(task) {
+  taskList.on('add', function(task) {
     task.on('destroy', function() {
       storage.update(function(data) {
         return _(data).reject(function(attrs) {
@@ -61,12 +63,12 @@
   // restore tasks
   storage.find(function(data) {
     data.forEach(function(attrs) {
-      Task.create(attrs);
+      taskList.add(attrs);
     });
   });
 
   // save created tasks
-  Task.on('create', function(task) {
+  taskList.on('add', function(task) {
     storage.update(function(data) {
       data.push(task.toJSON());
       return data;

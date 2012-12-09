@@ -14,7 +14,7 @@ describe('TotalView', function() {
   describe('#addTask()', function() {
     var task;
     beforeEach(function() {
-      task = Task.create();
+      task = new Task();
     });
 
     it('should add task', function() {
@@ -32,7 +32,7 @@ describe('TotalView', function() {
   describe('#removeTask()', function() {
     var task;
     beforeEach(function() {
-      task = Task.create();
+      task = new Task();
       totalView.addTask(task);
     });
 
@@ -51,7 +51,7 @@ describe('TotalView', function() {
   describe('#doneTaskCount()', function() {
     var task;
     beforeEach(function() {
-      task = Task.create({done: false});
+      task = new Task({done: false});
       totalView.addTask(task);
     });
 
@@ -65,14 +65,14 @@ describe('TotalView', function() {
   describe('#taskCount()', function() {
     it('should return count of tasks', function() {
       expect(totalView.taskCount()).to.be(0);
-      totalView.addTask(Task.create());
+      totalView.addTask(new Task());
       expect(totalView.taskCount()).to.be(1);
     });
   });
 
   describe('#update()', function() {
     it('should update self when task changed', function() {
-      var task = Task.create({done: false});
+      var task = new Task({done: false});
       totalView.addTask(task);
       expect(totalView.$el.find('.done-count').text()).to.contain('0 tasks');
       task.set('done', true);

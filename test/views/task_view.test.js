@@ -2,7 +2,7 @@
 describe('TaskView', function() {
   var taskView, task;
   beforeEach(function() {
-    task = Task.create();
+    task = new Task();
     taskView = new TaskView({model: task});
   });
 

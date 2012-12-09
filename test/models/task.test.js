@@ -3,7 +3,7 @@ describe('Task', function() {
   describe('#set()', function() {
     var task;
     beforeEach(function() {
-      task = Task.create();
+      task = new Task();
     });
 
     it('should set value', function() {
@@ -43,42 +43,6 @@ describe('Task', function() {
       task.on('change', function() {});
       task.destroy();
       expect(task._callbacks).to.be(undefined);
-    });
-  });
-
-  describe('.create()', function() {
-    afterEach(function() {
-      Task.off('create');
-    });
-
-    it('should return instance of Task', function() {
-      var task = Task.create();
-      expect(task).to.be.a(Task);
-    });
-
-    it('should create instance with text', function() {
-      var task = Task.create({text: 'ワインを買う'});
-      expect(task.get('text')).to.be('ワインを買う');
-    });
-
-    it('should create instance with done', function() {
-      var task = Task.create({done: true});
-      expect(task.get('done')).to.be(true);
-    });
-
-    it('should trigger event "create"', function(done) {
-      Task.on('create', function(task) {
-        expect(true).to.be.ok();
-        done();
-      });
-      Task.create();
-    });
-
-    it('should send instance as argument for listener', function() {
-      Task.on('create', function(task) {
-        expect(task).to.be.a(Task);
-      });
-      Task.create();
     });
   });
 });
