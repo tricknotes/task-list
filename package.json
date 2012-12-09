@@ -16,14 +16,14 @@
       "node": "~> 0.6.10"
   }
   , "dependencies": {
-      "coffee-script": "~> 1.2.0"
+      "coffee-script": "~> 1.4.0"
     , "express": "~> 2.5.8"
-    , "jade": "~> 0.20.3"
+    , "jade": "~> 0.27.7"
   }
   , "devDependencies": {
-      "mocha": "~> 1.0.1"
-    , "expect.js": "~> 0.1.2"
-    , "zombie": "~> 0.12.14"
+      "mocha": "~> 1.7.4"
+    , "expect.js": "~> 0.2.0"
+    , "zombie": "~> 1.4.1"
     , "mocha-ci-driver": "*"
   }
   , "optionalDependencies": {}
