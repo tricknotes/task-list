@@ -68,7 +68,7 @@
   // save created tasks
   Task.on('create', function(task) {
     storage.update(function(data) {
-      data.push(task.data());
+      data.push(task.toJSON());
       return data;
     });
   });

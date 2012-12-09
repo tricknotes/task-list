@@ -46,20 +46,6 @@ describe('Task', function() {
     });
   });
 
-  describe('#data()', function() {
-    it('should returns task data', function() {
-      var task = new Task();
-      task.set('id', 'task-1');
-      task.set('text', '洗濯をする');
-      task.set('done', true);
-      expect(task.data()).to.be.eql({
-          id: 'task-1'
-        , text: '洗濯をする'
-        , done: true
-      })
-    });
-  });
-
   describe('.create()', function() {
     afterEach(function() {
       Task.off('create');

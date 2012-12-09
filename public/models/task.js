@@ -9,10 +9,6 @@
       this.set('id', id);
     },
 
-    data: function() {
-      return this.toJSON();
-    },
-
     destroy: function() {
       this.trigger('destroy');
       this.off();
