@@ -10,7 +10,7 @@
     },
 
     updateDone: function(event) {
-      var checked = this.$el.find('.done').attr('checked');
+      var checked = !!this.$el.find('.done').is(':checked');
       this.model.set('done', checked);
     },
 
