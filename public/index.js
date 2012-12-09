@@ -13,9 +13,9 @@
   totalView.render();
   totalView.$el.appendTo('#total');
   Task.on('create', function(task) {
-    totalView.add(task);
+    totalView.addTask(task);
     task.on('destroy', function() {
-      totalView.remove(task);
+      totalView.removeTask(task);
     });
   });
 

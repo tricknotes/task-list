@@ -7,13 +7,13 @@
       this.models = [];
     },
 
-    add: function(model) {
+    addTask: function(model) {
       model.on('change', this.render, this);
       this.models.push(model);
       this.render();
     },
 
-    remove: function(model) {
+    removeTask: function(model) {
       var index = this.models.indexOf(model)
       model.off('change', this.render, this);
       this.models.splice(index, 1);
