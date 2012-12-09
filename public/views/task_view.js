@@ -3,35 +3,37 @@
   var TaskView = Backbone.View.extend({
     tagName: 'li',
     className: 'task',
+
+    events: {
+      'change .done': 'updateDone',
+      'click .delete': 'deleteModel'
+    },
+
+    updateDone: function(event) {
+      var checked = this.$el.find('.done').attr('checked');
+      this.model.set('done', checked);
+    },
+
+    deleteModel: function() {
+      this.model.destroy();
+    },
+
+    toggleDeletion: function() {
+      var done = this.model.get('done');
+      this.$el.find('.text').css('text-decoration', done ? 'line-through' : 'none');
+    },
+
     render: function() {
-      // TODO Extract events
       var task = this.model;
       var nodes = $(_.template(this._template)({task: task}));
-
       this.$el.html(nodes);
 
-      this.$el.find('.done').on('change', function() {
-        var checked = !!$(this).filter(':checked').length;
-        task.set('done', checked);
-      });
-
-      this.$el.find('.delete').on('click', function() {
-        task.destroy();
-      });
-
       // TODO Use `once`
-      task.on('destroy', function() {
-        this.$el.remove();
-      }.bind(this));
+      task.on('destroy', this.$el.remove, this.$el);
 
-      var toggleDeletion = function() {
-        var done = task.get('done');
-        this.$el.find('.text').css('text-decoration', done ? 'line-through' : 'none');
-      }.bind(this);
+      task.on('change', this.toggleDeletion, this);
 
-      task.on('change', toggleDeletion);
-
-      toggleDeletion();
+      this.toggleDeletion();
 
       return this;
     },
