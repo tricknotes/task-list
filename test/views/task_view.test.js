@@ -17,7 +17,7 @@ describe('TaskView', function() {
       });
       taskView.render();
       taskView.$el.appendTo('body');
-      taskView.$el.find('input.done').trigger(Zepto.Event('click'));
+      taskView.$el.find('input.done').trigger('click');
     });
   });
 
@@ -28,7 +28,10 @@ describe('TaskView', function() {
       })
       taskView.render();
       taskView.$el.appendTo('body');
-      taskView.$el.find('.delete').trigger(Zepto.Event('click'));
+      // In mocha-ci-driver, this code is required. Hmm...
+      taskView.$el.find('.done').trigger('click');
+
+      taskView.$el.find('.delete').trigger('click');
     });
   });
 });

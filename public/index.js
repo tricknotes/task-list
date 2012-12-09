@@ -1,5 +1,5 @@
 ;(function(window) {
-  var $ = window.Zepto;
+  var $ = window.jQuery;
 
   // setup task list
   Task.on('create', function(task) {
