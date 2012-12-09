@@ -13,7 +13,7 @@
     , "test": "node test/driver.js"
   }
   , "engines": {
-      "node": "~> 0.6.10"
+      "node": ">= 0.6.10"
   }
   , "dependencies": {
       "coffee-script": "~> 1.4.0"
