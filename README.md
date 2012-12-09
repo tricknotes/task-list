@@ -4,7 +4,7 @@
 
 A simple task list.
 
-It's my study for MVC and TEST.
+It's my study for Backbone.js and TEST.
 
 ## Setup
 
