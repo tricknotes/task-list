@@ -31,12 +31,12 @@
     },
 
     render: function() {
-      var nodes = $(_.template(this._template)(this));
+      var nodes = $(_.template(this.template)(this));
       this.$el.html(nodes);
       return this;
     },
 
-    _template: [
+    template: [
       , '<span class="all-count"><%- taskCount() %> tasks</span>'
       , '<span class="done-count">(done: <%- doneTaskCount() %> tasks)</span>'
     ].join('\n')

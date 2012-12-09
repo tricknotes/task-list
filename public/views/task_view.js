@@ -30,13 +30,13 @@
     },
 
     render: function() {
-      var nodes = $(_.template(this._template)({task: this.model}));
+      var nodes = $(_.template(this.template)({task: this.model}));
       this.$el.html(nodes);
       this.toggleDeletion();
       return this;
     },
 
-    _template: [
+    template: [
         '<label>'
       ,   '<input class="done" type="checkbox" <%- task.get("done") ? "checked=\\"checked\\"" : "" %> />'
       ,   '<span class="text"><%- task.get("text") %></span>'
