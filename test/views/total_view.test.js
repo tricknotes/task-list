@@ -3,12 +3,12 @@ describe('TotalView', function() {
   var totalView;
   beforeEach(function() {
     totalView = new TotalView();
-    var el = totalView.render();
-    el.appendTo('body');
+    totalView.render();
+    totalView.$el.appendTo('body');
   });
 
   afterEach(function() {
-    totalView.el.remove();
+    totalView.$el.remove();
   });
 
   describe('#add()', function() {
@@ -19,13 +19,13 @@ describe('TotalView', function() {
 
     it('should add task', function() {
       totalView.add(task);
-      expect(totalView.tasks).to.eql([task]);
+      expect(totalView.models).to.eql([task]);
     });
 
     it('should update self', function() {
-      expect(totalView.el.find('.all-count').text()).to.contain('0 tasks');
+      expect(totalView.$el.find('.all-count').text()).to.contain('0 tasks');
       totalView.add(task);
-      expect(totalView.el.find('.all-count').text()).to.contain('1 tasks');
+      expect(totalView.$el.find('.all-count').text()).to.contain('1 tasks');
     });
   });
 
@@ -38,13 +38,13 @@ describe('TotalView', function() {
 
     it('should remove task', function() {
       totalView.remove(task);
-      expect(totalView.tasks).to.eql([]);
+      expect(totalView.models).to.eql([]);
     });
 
     it('should update self', function() {
-      expect(totalView.el.find('.all-count').text()).to.contain('1 tasks');
+      expect(totalView.$el.find('.all-count').text()).to.contain('1 tasks');
       totalView.remove(task);
-      expect(totalView.el.find('.all-count').text()).to.contain('0 tasks');
+      expect(totalView.$el.find('.all-count').text()).to.contain('0 tasks');
     });
   });
 
@@ -74,9 +74,9 @@ describe('TotalView', function() {
     it('should update self when task changed', function() {
       var task = Task.create({done: false});
       totalView.add(task);
-      expect(totalView.el.find('.done-count').text()).to.contain('0 tasks');
+      expect(totalView.$el.find('.done-count').text()).to.contain('0 tasks');
       task.set('done', true);
-      expect(totalView.el.find('.done-count').text()).to.contain('1 tasks');
+      expect(totalView.$el.find('.done-count').text()).to.contain('1 tasks');
     });
   });
 });

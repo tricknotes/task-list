@@ -18,6 +18,8 @@
   , "dependencies": {
       "coffee-script": "~> 1.4.0"
     , "express": "~> 3.0.4"
+    , "backbone": "~> 0.9.2"
+    , "underscore": "~> 1.4.3"
     , "jade": "~> 0.27.7"
   }
   , "devDependencies": {

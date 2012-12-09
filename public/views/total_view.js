@@ -1,53 +1,46 @@
 ;(function(window) {
-  var TotalView = function() {
-    ViewBase.call(this);
-    this.tasks = [];
+  var TotalView = Backbone.View.extend({
+    tagName: 'div',
+    className: 'total',
 
-    var self = this;
-    this.update = function() {
-      self.el.replaceWith(self.render());
-    }
-  }
+    initialize: function() {
+      this.models = [];
+    },
 
-  TotalView.prototype = new ViewBase();
-  TotalView.prototype.constructor = TotalView;
+    add: function(model) {
+      model.on('change', this.render, this);
+      this.models.push(model);
+      this.render();
+    },
 
-  TotalView.prototype.template = [
-      '<div class="total">'
-    ,   '<span class="all-count"><%- taskCount() %> tasks</span>'
-    ,   '<span class="done-count">(done: <%- doneTaskCount() %> tasks)</span>'
-    , '</div>'
-  ].join('\n');
+    remove: function(model) {
+      var index = this.models.indexOf(model)
+      model.off('change', this.render, this);
+      this.models.splice(index, 1);
+      this.render();
+    },
 
-  TotalView.prototype.add = function(task) {
-    task.on('change', this.update);
-    this.tasks.push(task);
+    doneTaskCount: function() {
+      return _(this.models).select(function(model) {
+        return model.get('done');
+      }).length;
+    },
 
-    this.update();
-  }
+    taskCount: function() {
+      return this.models.length;
+    },
 
-  TotalView.prototype.remove = function(task) {
-    var index = this.tasks.indexOf(task)
+    render: function() {
+      var nodes = $(_.template(this._template)(this));
+      this.$el.html(nodes);
+      return this;
+    },
 
-    task.removeListener('change', this.update);
-    this.tasks.splice(index, 1);
-
-    this.update();
-  }
-
-  TotalView.prototype.doneTaskCount = function() {
-    var i = 0;
-    this.tasks.forEach(function(task) {
-      if (task.get('done')) {
-        i += 1;
-      }
-    });
-    return i;
-  }
-
-  TotalView.prototype.taskCount = function() {
-    return this.tasks.length;
-  }
+    _template: [
+      , '<span class="all-count"><%- taskCount() %> tasks</span>'
+      , '<span class="done-count">(done: <%- doneTaskCount() %> tasks)</span>'
+    ].join('\n')
+  });
 
   window.TotalView = TotalView;
 })(this);

@@ -3,13 +3,15 @@
 
   // setup task list
   Task.on('create', function(task) {
-    var taskView = new TaskView(task);
-    taskView.render().appendTo('#taskList');
+    var taskView = new TaskView({model: task});
+    taskView.render();
+    taskView.$el.appendTo('#taskList');
   });
 
   // setup total
   var totalView = new TotalView();
-  totalView.render().appendTo('#total');
+  totalView.render();
+  totalView.$el.appendTo('#total');
   Task.on('create', function(task) {
     totalView.add(task);
     task.on('destroy', function() {
@@ -44,11 +46,11 @@
       });
     });
 
-    task.on('change', function(property, value) {
+    task.on('change', function(task, updated) {
       storage.update(function(data) {
         data.forEach(function(attrs) {
           if (attrs.id === task.get('id')) {
-            attrs[property] = value;
+            _(attrs).extend(updated.changes);
           };
         });
         return data;

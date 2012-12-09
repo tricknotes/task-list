@@ -1,49 +1,53 @@
 ;(function(window) {
-  var TaskView = function(task) {
-    ViewBase.call(this);
-    this.task = task;
-  }
 
-  TaskView.prototype = new ViewBase();
-  TaskView.prototype.constructor = TaskView;
+  var TaskView = Backbone.View.extend({
+    tagName: 'li',
+    className: 'task',
 
-  TaskView.prototype.template = [
-      '<li class="task">'
-    ,   '<label>'
-    ,     '<input class="done" type="checkbox" <%- task.get("done") ? "checked=\\"checked\\"" : "" %> />'
-    ,     '<span class="text"><%- task.get("text") %></span>'
-    ,   '</label>'
-    ,   '<a class="delete">'
-    ,     '<img src="./images/delete.png" />'
-    ,   '</a>'
-    , '</li>'
-  ].join('\n');
+    events: {
+      'change .done': 'updateDone',
+      'click .delete': 'deleteModel'
+    },
 
-  TaskView.prototype.observe = function(root) {
-    var task = this.task;
+    updateDone: function(event) {
+      var checked = this.$el.find('.done').attr('checked');
+      this.model.set('done', checked);
+    },
 
-    root.find('.done').on('change', function() {
-      var checked = !!$(this).filter(':checked').length;
-      task.set('done', checked);
-    });
+    deleteModel: function() {
+      this.model.destroy();
+    },
 
-    root.find('.delete').on('click', function() {
-      task.destroy();
-    });
+    toggleDeletion: function() {
+      var done = this.model.get('done');
+      this.$el.find('.text').css('text-decoration', done ? 'line-through' : 'none');
+    },
 
-    task.once('destroy', function() {
-      root.remove();
-    });
+    render: function() {
+      var task = this.model;
+      var nodes = $(_.template(this._template)({task: task}));
+      this.$el.html(nodes);
 
-    var toggleDeletion = function() {
-      var done = task.get('done');
-      root.find('.text').css('text-decoration', done ? 'line-through' : 'none');
-    }
+      // TODO Use `once`
+      task.on('destroy', this.$el.remove, this.$el);
 
-    task.on('change', toggleDeletion);
+      task.on('change', this.toggleDeletion, this);
 
-    toggleDeletion();
-  }
+      this.toggleDeletion();
+
+      return this;
+    },
+
+    _template: [
+        '<label>'
+      ,   '<input class="done" type="checkbox" <%- task.get("done") ? "checked=\\"checked\\"" : "" %> />'
+      ,   '<span class="text"><%- task.get("text") %></span>'
+      , '</label>'
+      , '<a class="delete">'
+      ,   '<img src="./images/delete.png" />'
+      , '</a>'
+    ].join('\n')
+  });
 
   window.TaskView = TaskView;
 })(this);
