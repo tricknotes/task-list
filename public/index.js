@@ -33,24 +33,22 @@
     return data || []; // initialize
   });
 
-  taskList.on('add', function(task) {
-    task.on('destroy', function() {
-      storage.update(function(data) {
-        return _(data).reject(function(attrs) {
-          return _.isEqual(attrs.id, task.get('id'));
-        });
+  taskList.on('destroy', function(task) {
+    storage.update(function(data) {
+      return _(data).reject(function(attrs) {
+        return _.isEqual(attrs.id, task.get('id'));
       });
     });
+  });
 
-    task.on('change', function(task, updated) {
-      storage.update(function(data) {
-        data.forEach(function(attrs) {
-          if (attrs.id === task.get('id')) {
-            _(attrs).extend(task.toJSON());
-          };
-        });
-        return data;
+  taskList.on('change', function(task) {
+    storage.update(function(data) {
+      data.forEach(function(attrs) {
+        if (attrs.id === task.get('id')) {
+          _(attrs).extend(task.toJSON());
+        };
       });
+      return data;
     });
   });
 
