@@ -1,5 +1,5 @@
 express = require 'express'
-app = module.exports = express.createServer()
+app = module.exports = express()
 
 app.use(express.static(__dirname + '/../public'))
 app.set('view options', layout: false)
