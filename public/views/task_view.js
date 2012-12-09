@@ -6,9 +6,9 @@
     render: function() {
       // TODO Extract events
       var task = this.model;
-      var root = $(_.template(this._template)({task: task}));
+      var nodes = $(_.template(this._template)({task: task}));
 
-      this.$el.html(root);
+      this.$el.html(nodes);
 
       this.$el.find('.done').on('change', function() {
         var checked = !!$(this).filter(':checked').length;

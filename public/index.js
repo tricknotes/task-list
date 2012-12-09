@@ -10,7 +10,8 @@
 
   // setup total
   var totalView = new TotalView();
-  totalView.render().appendTo('#total');
+  totalView.render();
+  totalView.$el.appendTo('#total');
   Task.on('create', function(task) {
     totalView.add(task);
     task.on('destroy', function() {
