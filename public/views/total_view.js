@@ -29,7 +29,8 @@
   TotalView.prototype.remove = function(task) {
     var index = this.tasks.indexOf(task)
 
-    task.removeListener('change', this.update);
+    // TODO Enable
+    // task.removeListener('change', this.update);
     this.tasks.splice(index, 1);
 
     this.update();

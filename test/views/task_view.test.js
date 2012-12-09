@@ -12,7 +12,7 @@ describe('TaskView', function() {
 
   describe('input.done with click', function() {
     it('should make task done', function(done) {
-      task.on('change', function() {
+      task.on('change:done', function() {
         done();
       });
       var el = taskView.render();
@@ -22,11 +22,13 @@ describe('TaskView', function() {
   });
 
   describe('.delete with click', function() {
-    it('should make task destroy', function() {
+    it('should make task destroy', function(done) {
+      task.on('destroy', function() {
+        done();
+      })
       var el = taskView.render();
       el.appendTo('body');
       el.find('.delete').trigger(Zepto.Event('click'));
-      expect(task.listeners('.destroy')).to.have.length(0);
     });
   });
 });

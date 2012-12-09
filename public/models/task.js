@@ -1,45 +1,32 @@
 ;(function(window) {
-  var EventEmitter = window.EventEmitter;
+  var Task = Backbone.Model.extend({
+    defaults: {
+      done: false
+    },
 
-  var Task = function(attrs) {
-    EventEmitter.call(this);
-    this.id   = attrs && attrs.id || ('task-' + Number(new Date()));
-    this.text = attrs && attrs.text;
-    this.done = attrs && attrs.done || false;
-  };
+    initialize: function(attrs) {
+      this.id = attrs && attrs.id || ('task-' + Number(new Date()));
+    },
 
-  Task.prototype = new EventEmitter();
-  Task.prototype.constructor = Task;
+    data: function() {
+      return this.toJSON();
+    },
 
-  Task.prototype.set = function (property, value) {
-    this[property] = value;
-    this.emit('change', property, value);
-  };
+    destroy: function() {
+      this.trigger('destroy');
+      this.off();
+    }
+  });
 
-  Task.prototype.get = function (property) {
-    return this[property];
-  };
-
-  Task.prototype.data = function() {
-    return {
-        id:   this.get('id')
-      , text: this.get('text')
-      , done: this.get('done')
-    };
-  };
-
-  Task.prototype.destroy = function () {
-    this.emit('destroy');
-    this.removeAllListeners();
-  };
-
-  Task.__proto__ = new EventEmitter();
-
+  // TODO Mode to Collection
   Task.create = function(attrs) {
     var task = new Task(attrs);
-    this.emit('create', task);
+    this.trigger('create', task);
     return task;
   };
+
+  // TODO Use Collection
+  _.extend(Task, Backbone.Events);
 
   window.Task = Task;
 })(this);

@@ -11,7 +11,7 @@ describe('Task', function() {
       expect(task.get('text')).to.be('買い物に行く');
     });
 
-    it('should emit event "change"', function(done) {
+    it('should trigger event "change"', function(done) {
       task.on('change', function() {
         expect(true).to.be.ok();
         done();
@@ -20,9 +20,8 @@ describe('Task', function() {
     });
 
     it('should send property with value as argument for listener', function(done) {
-      task.on('change', function(property, value) {
-        expect(property).to.be('text');
-        expect(value).to.be('本を買う');
+      task.on('change:text', function(task, change) {
+        expect(change).to.be('本を買う');
         done();
       });
       task.set('text', '本を買う');
@@ -30,7 +29,7 @@ describe('Task', function() {
   });
 
   describe('#destroy', function() {
-    it('should emit event "destroy"', function(done) {
+    it('should trigger event "destroy"', function(done) {
       var task = new Task();
       task.on('destroy', function() {
         expect(true).to.be.ok();
@@ -43,7 +42,7 @@ describe('Task', function() {
       var task = new Task();
       task.on('change', function() {});
       task.destroy();
-      expect(task.listeners('change')).to.have.length(0);
+      expect(task._callbacks).to.be(undefined);
     });
   });
 
@@ -63,7 +62,7 @@ describe('Task', function() {
 
   describe('.create()', function() {
     afterEach(function() {
-      Task.removeAllListeners('create');
+      Task.off('create');
     });
 
     it('should return instance of Task', function() {
@@ -81,7 +80,7 @@ describe('Task', function() {
       expect(task.get('done')).to.be(true);
     });
 
-    it('should emit event "create"', function(done) {
+    it('should trigger event "create"', function(done) {
       Task.on('create', function(task) {
         expect(true).to.be.ok();
         done();

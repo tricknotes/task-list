@@ -31,7 +31,8 @@
       task.destroy();
     });
 
-    task.once('destroy', function() {
+    // TODO Use `once`
+    task.on('destroy', function() {
       root.remove();
     });
 
