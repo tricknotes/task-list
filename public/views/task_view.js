@@ -5,7 +5,6 @@
     className: 'task',
 
     initialize: function() {
-      // TODO Use `once`
       this.model.on('destroy', this.remove, this);
       this.model.on('change', this.toggleDeletion, this);
     },
