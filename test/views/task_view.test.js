@@ -7,7 +7,7 @@ describe('TaskView', function() {
   });
 
   afterEach(function() {
-    taskView.$el.remove();
+    taskView.remove();
   });
 
   describe('input.done with click', function() {

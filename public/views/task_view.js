@@ -29,7 +29,7 @@
       this.$el.html(nodes);
 
       // TODO Use `once`
-      task.on('destroy', this.$el.remove, this.$el);
+      task.on('destroy', this.remove, this);
 
       task.on('change', this.toggleDeletion, this);
 
