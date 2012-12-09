@@ -4,6 +4,12 @@
     tagName: 'li',
     className: 'task',
 
+    initialize: function() {
+      // TODO Use `once`
+      this.model.on('destroy', this.remove, this);
+      this.model.on('change', this.toggleDeletion, this);
+    },
+
     events: {
       'change .done': 'updateDone',
       'click .delete': 'deleteModel'
@@ -24,17 +30,9 @@
     },
 
     render: function() {
-      var task = this.model;
-      var nodes = $(_.template(this._template)({task: task}));
+      var nodes = $(_.template(this._template)({task: this.model}));
       this.$el.html(nodes);
-
-      // TODO Use `once`
-      task.on('destroy', this.remove, this);
-
-      task.on('change', this.toggleDeletion, this);
-
       this.toggleDeletion();
-
       return this;
     },
 
