@@ -6,3 +6,7 @@ app.set('view options', layout: false)
 
 app.get '/', (req, res) ->
   res.render('index.jade')
+
+app.use(express.static(__dirname + '/../node_modules/jquery-browser/lib'))
+app.use(express.static(__dirname + '/../node_modules/backbone'))
+app.use(express.static(__dirname + '/../node_modules/underscore'))
