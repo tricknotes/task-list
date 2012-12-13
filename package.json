@@ -14,7 +14,8 @@
     , "test": "node test/driver.js && ./node_modules/mocha/bin/mocha test/acceptance/*.test.js --reporter spec"
   }
   , "engines": {
-      "node": ">= 0.6.10"
+      "node": "0.8.x",
+      "npm": "1.1.x"
   }
   , "dependencies": {
       "coffee-script": "~> 1.4.0"
