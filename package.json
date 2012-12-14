@@ -29,7 +29,7 @@
     , "expect.js": "~> 0.2.0"
     , "zombie": "~> 1.4.1"
     , "mocha-ci-driver": "*"
-    , "jshint": "~> 0.1.9"
+    , "jshint": "~> 0.9.1"
   }
   , "optionalDependencies": {}
 }
