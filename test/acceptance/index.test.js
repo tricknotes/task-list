@@ -12,7 +12,7 @@ describe('Task List', function() {
   var addTask = function(text, callback) {
     browser
       .fill('task-text', 'Eat SoupCurry')
-      .fire('submit', browser.$$('form#createForm'), callback);
+      .fire('submit', browser.$$('#createForm form'), callback);
   };
 
   beforeEach(function() {

@@ -9,6 +9,7 @@ block scripts
   script(src='/backbone.js')
   script(src='/models/storage.js')
   script(src='/models/task.js')
+  script(src='/views/create_task_view.js')
   script(src='/views/total_view.js')
   script(src='/views/task_view.js')
   script(src='/index.js')
@@ -17,8 +18,9 @@ block content
   h1 Task List
   #content
 
-    form#createForm
-      input#text(name='task-text', type='text', placeholder='What do you need to do?')
+    #createForm
+      form
+        input#text(name='task-text', type='text', placeholder='What do you need to do?')
 
     ul#taskList
 

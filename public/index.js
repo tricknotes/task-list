@@ -16,15 +16,9 @@
   totalView.$el.appendTo('#total');
 
   // setup add task form
-  $('#createForm').on('submit', function() {
-    var $text = $('#text')
-      , text = $text.val()
-
-    if (!text) { return false; }
-
-    taskList.add({text: text});
-    $text.val('');
-    return false;
+  var createTaskView = new CreateTaskView({
+    el: '#createForm',
+    collection: taskList
   });
 
   // setup storage
