@@ -28,7 +28,7 @@
   taskList.on('destroy', function(task) {
     storage.update(function(data) {
       return _(data).reject(function(attrs) {
-        return _.isEqual(attrs.id, task.get('id'));
+        return attrs.id === task.get('id');
       });
     });
   });
