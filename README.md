@@ -10,7 +10,7 @@ It's my study for Backbone.js and TEST.
 
 Requirements:
 
-* [Node.js](http://nodejs.org/) (~> 0.6.11)
+* [Node.js](http://nodejs.org/) (>= 0.6.11)
 
 ``` sh
 $ git clone git://github.com/tricknotes/task-list.git
@@ -18,7 +18,7 @@ $ cd task-list
 $ npm install .
 ```
 
-And run:
+And run: (default: listen port `80`)
 
 ``` sh
 npm start
