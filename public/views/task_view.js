@@ -21,6 +21,7 @@
 
     deleteModel: function() {
       this.model.destroy();
+      return false;
     },
 
     toggleDeletion: function() {
