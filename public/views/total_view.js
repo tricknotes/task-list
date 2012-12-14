@@ -26,8 +26,8 @@
     },
 
     template: [
-        '<span class="all-count"><%- taskCount() %> tasks</span>'
-      , '<span class="done-count">(done: <%- doneTaskCount() %> tasks)</span>'
+      '<span class="all-count"><%- taskCount() %> tasks</span>',
+      '<span class="done-count">(done: <%- doneTaskCount() %> tasks)</span>'
     ].join('\n')
   });
 

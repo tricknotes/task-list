@@ -37,13 +37,13 @@
     },
 
     template: [
-        '<label>'
-      ,   '<input class="done" type="checkbox" <%- task.get("done") ? "checked=\\"checked\\"" : "" %> />'
-      ,   '<span class="text"><%- task.get("text") %></span>'
-      , '</label>'
-      , '<a class="delete" href="javascript:void(0);">'
-      ,   '[×]'
-      , '</a>'
+      '<label>',
+        '<input class="done" type="checkbox" <%- task.get("done") ? "checked=\\"checked\\"" : "" %> />',
+        '<span class="text"><%- task.get("text") %></span>',
+      '</label>',
+      '<a class="delete" href="javascript:void(0);">',
+        '[×]',
+      '</a>'
     ].join('\n')
   });
 
