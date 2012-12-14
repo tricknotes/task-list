@@ -5,7 +5,7 @@
     },
 
     initialize: function(attrs) {
-      var id = attrs && attrs.id || ('task-' + Number(new Date()))
+      var id = attrs && attrs.id || ('task-' + Number(new Date()));
       this.set('id', id);
     },
 

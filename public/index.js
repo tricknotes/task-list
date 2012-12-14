@@ -38,7 +38,7 @@
       data.forEach(function(attrs) {
         if (attrs.id === task.get('id')) {
           _(attrs).extend(task.toJSON());
-        };
+        }
       });
       return data;
     });

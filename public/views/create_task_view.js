@@ -6,7 +6,7 @@
 
     onSubmit: function() {
       var $text = this.$el.find('#text'),
-          text = $text.val()
+          text = $text.val();
       if (!text) { return false; }
 
       this.createTask(text);
