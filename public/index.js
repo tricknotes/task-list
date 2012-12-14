@@ -1,6 +1,4 @@
 ;(function(window) {
-  var $ = window.jQuery;
-
   var taskList = new TaskList();
 
   // setup task list
