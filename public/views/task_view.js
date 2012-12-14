@@ -40,8 +40,8 @@
       ,   '<input class="done" type="checkbox" <%- task.get("done") ? "checked=\\"checked\\"" : "" %> />'
       ,   '<span class="text"><%- task.get("text") %></span>'
       , '</label>'
-      , '<a class="delete">'
-      ,   '<img src="./images/delete.png" />'
+      , '<a class="delete" href="javascript:void(0);">'
+      ,   '[×]'
       , '</a>'
     ].join('\n')
   });

@@ -65,10 +65,14 @@ ul#taskList {
 }
 
 .task .delete {
-  display: none;
+  color: #333;
+  font-size: 12px;
+  display: inline;
 }
 
-.task:hover .delete {
+.task .delete:hover {
+  color: #eee;
+  background-color: #555;
   display: inline;
 }
 
