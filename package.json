@@ -9,7 +9,7 @@
   }
   , "main": "./lib/index"
   , "scripts": {
-      "start": "./node_modules/coffee-script/bin/coffee app.coffee"
+      "start": "./node_modules/coffee-script/bin/coffee run.coffee"
     , "test": "node test/driver.js && ./node_modules/.bin/mocha test/acceptance/*.test.js --reporter spec && ./node_modules/.bin/jshint ./public/*.js ./public/views/*.js public/models/*.js"
   }
   , "engines": {
